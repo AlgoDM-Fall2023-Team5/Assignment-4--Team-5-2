@@ -22,7 +22,7 @@ async def image_search(request: ImageSearchRequest):
     
     closest_image_ids = index.query(
         vector=image_vector,
-        top_k=3, 
+        top_k=4, 
         include_values=False
     )
 

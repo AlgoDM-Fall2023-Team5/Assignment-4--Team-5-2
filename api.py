@@ -39,18 +39,19 @@ async def image_search(request: ImageSearchRequest):
     )
 
     closest_image_ids = [i['id'] for i in closest_image_ids['matches']]
-
-    # images_from_s3 = []
-
-    # for image_id in closest_image_ids:
-    #     try:
-    #         image_object = s3.get_object(Bucket=s3_bucket_name, Key=f"images/{image_id}")
-    #         images_from_s3.append(image_object['Body'].read())
-    #     except NoCredentialsError:
-    #         return HTTPException(status_code=500, detail="AWS credentials not available.")
-    #     except Exception as e:
-    #         return HTTPException(status_code=500, detail=f"Error retrieving image {image_id}: {str(e)}")
-
     return closest_image_ids
 
-    #return closest_image_ids
+    images_from_s3 = []
+
+    for image_id in closest_image_ids:
+        try:
+            image_object = s3.get_object(Bucket=s3_bucket_name, Key=f"images/{image_id}")
+            images_from_s3.append(image_object['Body'].read())
+        except NoCredentialsError:
+            return HTTPException(status_code=500, detail="AWS credentials not available.")
+        except Exception as e:
+            return HTTPException(status_code=500, detail=f"Error retrieving image {image_id}: {str(e)}")
+
+    
+
+    return closest_image_ids

@@ -22,22 +22,31 @@ image_files = [f for f in os.listdir(dataset_folder) if f.endswith(('.jpg', '.pn
 pinecone_index_name = "adm4"  # Replace with your actual Pinecone index name
 pinecone_index = pinecone.Index(pinecone_index_name)
 
+count = 0
 # Loop through each image in the dataset
 for image_file in image_files:
-    # Construct the full path to the image
-    image_path = os.path.join(dataset_folder, image_file)
+    if count <13734:
+        print(count)
+        count = count +1
 
-    # Encode the image
-    image = Image.open(image_path)
-    image_input = image_encoder.encode(image, convert_to_tensor=True)
-    image_features = image_input.flatten()
+        pass
+    else:
+        # Construct the full path to the image
+        image_path = os.path.join(dataset_folder, image_file)
 
-    # Convert the NumPy array to a list
-    image_features_list = image_features.tolist()
+        # Encode the image
+        image = Image.open(image_path)
+        image_input = image_encoder.encode(image, convert_to_tensor=True)
+        image_features = image_input.flatten()
 
-    # Upsert vector into Pinecone index with image file name as tag using tuple-based upsert
-    upsert_response = pinecone_index.upsert(
-        vectors=[(image_file, image_features_list)]
-    )
+        # Convert the NumPy array to a list
+        image_features_list = image_features.tolist()
+
+        # Upsert vector into Pinecone index with image file name as tag using tuple-based upsert
+        upsert_response = pinecone_index.upsert(
+            vectors=[(image_file, image_features_list)]
+        )
+        print(count)
+        count = count +1
 
 print("Vectors ingested into Pinecone.")

@@ -1,12 +1,9 @@
 # Assignment README 🚀
 
 ## Quick Links:🔎
-1. [Codelabs](https://codelabs-preview.appspot.com/?file_id=1wqKhtmHWH24mrivcSj_VH1B2udrAi4xTzndSzxf_gQ8#0)🔗
-2. [Visual Search Artistic Style](team5admartistic.streamlit.app)🔗
-3. [Visual Search Similarity](team5admsimilarity.streamlit.app)🔗
-4. [Visual Search VAE](team5admvae.streamlit.app)🔗
-5. [Contribution Report:](https://github.com/AlgoDM-Fall2023-Team5/Assignment-3--Team-5/blob/Main/Part_1/Contribution%20Report.pdf)🔗
-6. [Video Recording:]()🔗
+1. [Codelabs](https://codelabs-preview.appspot.com/?file_id=1jzEAozrSR_Eq6OkHWqg8q86x8FLNeKQOo54mn6V42FE#)🔗
+2. [Contribution Report:]()🔗
+3. [Video Recording:]()🔗
 
 
 

@@ -2,8 +2,8 @@
 
 ## Quick Links:🔎
 1. [Codelabs](https://codelabs-preview.appspot.com/?file_id=1jzEAozrSR_Eq6OkHWqg8q86x8FLNeKQOo54mn6V42FE#)🔗
-2. [Contribution Report:]()🔗
-3. [Video Recording:]()🔗
+2. [Contribution Report:](https://github.com/AlgoDM-Fall2023-Team5/Assignment-4--Team-5/blob/main/Contribution%20Report.pdf)🔗
+3. [Video Recording:](https://drive.google.com/drive/folders/1uA8vMEYpxND4jO-fFFQ_LKSTZBjmMhU2?usp=sharing)🔗
 
 
 

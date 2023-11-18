@@ -25,12 +25,6 @@ pinecone_index = pinecone.Index(pinecone_index_name)
 count = 0
 # Loop through each image in the dataset
 for image_file in image_files:
-    if count <13734:
-        print(count)
-        count = count +1
-
-        pass
-    else:
         # Construct the full path to the image
         image_path = os.path.join(dataset_folder, image_file)
 

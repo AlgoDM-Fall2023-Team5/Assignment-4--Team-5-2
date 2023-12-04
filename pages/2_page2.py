@@ -4,7 +4,8 @@ from PIL import Image
 from io import BytesIO
 from sentence_transformers import SentenceTransformer
 import json  # Add this import
-import boto3 
+import boto3
+from api import image_search 
 
 
 
@@ -39,8 +40,10 @@ if uploaded_image is not None:
         st.write(image_features_list)
 
         # Send the image vector as JSON in the request body
-        response = requests.post(f"{url}/image_search", json={"image": image_features_list})
-        features = response.json()
+        # response = requests.post(f"{url}/image_search", json={"image": image_features_list})
+        # features = response.json()
+
+        features = image_search(image_features_list)
 
         s3_client = boto3.client(service_name = 's3',
                 aws_access_key_id='AKIASGVOLPG2BPBLER6T',

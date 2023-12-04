@@ -55,3 +55,15 @@ async def image_search(request: ImageSearchRequest):
     
 
     return closest_image_ids
+def image_search(request: ImageSearchRequest):
+    image_vector = request.image
+    
+    closest_image_ids = index.query(
+        vector=image_vector,
+        top_k=4, 
+        include_values=False
+    )
+
+    closest_image_ids = [i['id'] for i in closest_image_ids['matches']]
+    return closest_image_ids
+

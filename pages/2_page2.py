@@ -4,6 +4,9 @@ from PIL import Image
 from io import BytesIO
 from sentence_transformers import SentenceTransformer
 import json  # Add this import
+import boto3 
+
+
 
 url = "http://127.0.0.1:8000"
 path = "C:/Users/shiri/Documents/Assg4ADM/dataset"
@@ -39,10 +42,25 @@ if uploaded_image is not None:
         response = requests.post(f"{url}/image_search", json={"image": image_features_list})
         features = response.json()
 
+        s3_client = boto3.client(service_name = 's3',
+                aws_access_key_id='AKIASGVOLPG2BPBLER6T',
+                aws_secret_access_key='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',
+                region_name = 'us-east-2')
+        
 
         for i in features:
-            image_path = path +'/' +i 
-            image = Image.open(image_path)
-            st.image(image, use_column_width=True)
+            img = s3_client.get_object(Bucket='assignment4admt5', Key=f'dataset/{i}')
+            
+
+
+            image_bytes = img['Body'].read()
+
+            # Display the image in Streamlit
+            st.image(image_bytes)
+
+        # for i in features:
+        #     image_path = path +'/' +i 
+        #     image = Image.open(image_path)
+        #     st.image(image, use_column_width=True)
 
         st.write(features)

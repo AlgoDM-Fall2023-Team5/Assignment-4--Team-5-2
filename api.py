@@ -12,7 +12,7 @@ from PIL import Image
 
 app = FastAPI()
 
-pinecone_api_key = "878f92d2-ce36-4be5-bbc0-05a56ff092fc"
+pinecone_api_key = "7f78befa-055d-41ac-a90a-cff6a5282d66"
 index_name = "adm4"
 s3_bucket_name = "assignment4admt5"
 

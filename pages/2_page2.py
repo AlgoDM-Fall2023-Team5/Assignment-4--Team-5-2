@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 from PIL import Image
+import pinecone
 from io import BytesIO
 from sentence_transformers import SentenceTransformer
 import json  # Add this import
@@ -11,6 +12,8 @@ from api import image_search
 
 url = "http://127.0.0.1:8000"
 path = "C:/Users/shiri/Documents/Assg4ADM/dataset"
+pinecone_api_key = "7f78befa-055d-41ac-a90a-cff6a5282d66"
+index_name = "adm4"
 
 image_encoder = SentenceTransformer('clip-ViT-B-32')
 
@@ -42,8 +45,19 @@ if uploaded_image is not None:
         # Send the image vector as JSON in the request body
         # response = requests.post(f"{url}/image_search", json={"image": image_features_list})
         # features = response.json()
+        pinecone.init(api_key=pinecone_api_key, environment="gcp-starter")
+        index = pinecone.Index(index_name)
+        image_vector = image_features_list
+    
+        closest_image_ids = index.query(
+            vector=image_vector,
+            top_k=4, 
+            include_values=False
+        )
 
-        features = image_search(image_features_list)
+        closest_image_ids = [i['id'] for i in closest_image_ids['matches']]
+
+        features = closest_image_ids
 
         s3_client = boto3.client(service_name = 's3',
                 aws_access_key_id='AKIASGVOLPG2BPBLER6T',

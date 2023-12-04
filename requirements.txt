@@ -3,3 +3,4 @@ pinecone-client==2.2.4
 tensorflow==2.15.0
 sentence_transformers==2.2.2
 boto3==1.33.2
+fastapi==0.104.1

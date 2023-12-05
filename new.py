@@ -13,7 +13,7 @@ url = "http://127.0.0.1:8000"
 path = "C:/Users/shiri/Documents/Assg4ADM/dataset"
 pinecone_api_key = "7f78befa-055d-41ac-a90a-cff6a5282d66"
 index_name = "adm4"
-st.set_option('browser.gatherUsageStats', False)
+
 # Load the SentenceTransformer model
 image_encoder = SentenceTransformer('clip-ViT-B-32')
 

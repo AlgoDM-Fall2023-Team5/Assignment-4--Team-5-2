@@ -12,7 +12,7 @@ import torch
 import clip
 
 
-
+st.set_option('browser.gatherUsageStats', False)
 
 
 url = "http://127.0.0.1:8000"
